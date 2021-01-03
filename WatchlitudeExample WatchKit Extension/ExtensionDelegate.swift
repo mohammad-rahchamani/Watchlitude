@@ -6,11 +6,17 @@
 //
 
 import WatchKit
+import Watchlitude
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    
+    let key = "YOUR AMPLITUDE API KEY"
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        Watchlitude.shared.initializeApiKey(key)
+        Watchlitude.shared.setDeviceId(WKInterfaceDevice.current().identifierForVendor?.uuidString ?? "UUID String")
+        
     }
 
     func applicationDidBecomeActive() {

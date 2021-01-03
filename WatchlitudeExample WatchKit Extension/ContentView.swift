@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import Watchlitude
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Button(action: {
+            Watchlitude.shared.logEvent("dummy_event",
+                                        properties: [
+                                            "foo": "bar"
+                                        ])
+        }, label: {
+            Text("Log")
+        })
             .padding()
     }
 }
