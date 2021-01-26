@@ -19,7 +19,14 @@ class Network {
             return
         }
         
-        let session = URLSession(configuration: .default)
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+        
+        // By default, the system will wait seven days to see if internet connectivity becomes available
+        // but you can control that with the timeoutIntervalForResource
+        // config.timeoutIntervalForResource = 60
+        
+        let session = URLSession(configuration: config)
         
         var request = URLRequest(url: AMPLITUDE_URL)
         request.httpMethod = "POST"
